@@ -36,6 +36,31 @@ Employee employee;
 
     @Test
     public void canRaiseSalary() {
-        assertEquals(31000.0, employee.raiseSalary(1000), 0.01);
+        employee.raiseSalary(1000);
+        assertEquals(31000.0, employee.getSalary(), 0.01);
+    }
+
+    @Test
+    public void canSetName() {
+        employee.setName("Allan");
+        assertEquals("Allan", employee.getName());
+    }
+
+    @Test
+    public void negativeSalary() {
+        employee.raiseSalary(-1000.0);
+        assertEquals(30000.0, employee.getSalary(), 0.01);
+    }
+
+    @Test
+    public void notNull() {
+        employee.setName(null);
+        assertEquals("John", employee.getName());
+    }
+
+    @Test
+    public void emptyString() {
+        employee.setName("");
+        assertEquals("John", employee.getName());
     }
 }
